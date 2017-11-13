@@ -56,8 +56,30 @@ class ViewController: UIViewController {
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
+        
+        // Set one of the three displayed flags to be the "correct answer" flag
+        correctAnswer = GKRandomSource.sharedRandom().nextInt(upperBound: 3)
+        
+        // Display the "correct answer" flag's country name at the top
+        // This will be the country that the user is attempting to pick the flag for
+        title = countries[correctAnswer].uppercased()
     }
-
+    
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        var title: String
+        
+        // If user's choice is correct add to score, otherwise subtract from score
+        if sender.tag == correctAnswer {
+            title = "Correct!"
+            score += 1
+        }
+        else {
+            title = "Wrong"
+            score -= 1
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
