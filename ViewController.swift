@@ -2,17 +2,60 @@
 //  ViewController.swift
 //  GuessTheFlag
 //
-//  Created by Faith Giguere on 11/13/17.
-//  Copyright © 2017 Faith Giguere. All rights reserved.
-//
 
+import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
-
+    // Correspond to the three buttons containing flag choices
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var button3: UIButton!
+    
+    // Array of all countries available in the game
+    var countries = [String]()
+    // Correct flag for given country
+    var correctAnswer = 0
+    // User's total score
+    var score = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Create borders for the buttons to make flags with white more visible
+        button1.layer.borderWidth = 1
+        button2.layer.borderWidth = 1
+        button3.layer.borderWidth = 1
+    
+        button1.layer.borderColor = UIColor.lightGray.cgColor
+        button2.layer.borderColor = UIColor.lightGray.cgColor
+        button3.layer.borderColor = UIColor.lightGray.cgColor
+        
+        
+        // Add applicable countries to the array of countries
+        countries.append("estonia")
+        countries.append("france")
+        countries.append("germany")
+        countries.append("ireland")
+        countries.append("italy")
+        countries.append("monaco")
+        countries.append("nigeria")
+        countries.append("poland")
+        countries.append("russia")
+        countries.append("spain")
+        countries.append("uk")
+        countries.append("us")
+        
+        askQuestion()
+    }
+    
+    func askQuestion () {
+        // Randomly generate the three flags to be displayed
+        countries = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: countries) as! [String]
+        
+        button1.setImage(UIImage(named: countries[0]), for: .normal)
+        button2.setImage(UIImage(named: countries[1]), for: .normal)
+        button3.setImage(UIImage(named: countries[2]), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
