@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Papyrus.ttc">
+            <string>Papyrus</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -39,15 +44,31 @@
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u6V-fL-KAQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbX-0z-eeh">
+                                <rect key="frame" x="87.5" y="547" width="81.5" height="39"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBe-XN-FGm">
+                                <rect key="frame" x="175.5" y="547" width="40" height="39"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.83927408854166663" green="0.91710069444444442" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VRe-iz-Nb7" firstAttribute="top" secondItem="ecF-6D-KGW" secondAttribute="bottom" constant="30" id="2hG-LN-qLj"/>
                             <constraint firstItem="ecF-6D-KGW" firstAttribute="centerX" secondItem="9Hn-gk-a0G" secondAttribute="centerX" id="E0P-PF-7oU"/>
+                            <constraint firstItem="yBe-XN-FGm" firstAttribute="top" secondItem="VRe-iz-Nb7" secondAttribute="bottom" constant="87" id="JC0-Ns-quY"/>
                             <constraint firstItem="9Hn-gk-a0G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="KHd-8N-biB"/>
+                            <constraint firstItem="yBe-XN-FGm" firstAttribute="leading" secondItem="sbX-0z-eeh" secondAttribute="trailing" constant="6.5" id="MkF-GA-pjf"/>
                             <constraint firstItem="VRe-iz-Nb7" firstAttribute="centerX" secondItem="ecF-6D-KGW" secondAttribute="centerX" id="QFe-fm-yak"/>
                             <constraint firstItem="9Hn-gk-a0G" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aZf-Cf-vuw"/>
+                            <constraint firstItem="sbX-0z-eeh" firstAttribute="top" secondItem="VRe-iz-Nb7" secondAttribute="bottom" constant="87" id="cEF-74-UOy"/>
                             <constraint firstItem="ecF-6D-KGW" firstAttribute="top" secondItem="9Hn-gk-a0G" secondAttribute="bottom" constant="30" id="e0n-Xa-ZW3"/>
+                            <constraint firstItem="sbX-0z-eeh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87.5" id="vUW-Tk-MJh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -56,6 +77,7 @@
                         <outlet property="button1" destination="9Hn-gk-a0G" id="cg2-j8-PYd"/>
                         <outlet property="button2" destination="ecF-6D-KGW" id="ojV-hS-fMB"/>
                         <outlet property="button3" destination="VRe-iz-Nb7" id="jOu-Os-x1a"/>
+                        <outlet property="roundLabel" destination="yBe-XN-FGm" id="z11-DF-v38"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

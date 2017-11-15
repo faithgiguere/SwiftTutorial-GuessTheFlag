@@ -12,12 +12,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     
+    // Corresponds to round label
+    @IBOutlet weak var roundLabel: UILabel!
+    
     // Array of all countries available in the game
     var countries = [String]()
     // Correct flag for given country
     var correctAnswer = 0
+    // Round Number
+    var round = 0
     // User's total score
     var score = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +52,12 @@ class ViewController: UIViewController {
         countries.append("uk")
         countries.append("us")
         
-        askQuestion()
+        updateLabels()
+        
+        askQuestion(action: nil)
     }
     
-    func askQuestion () {
+    func askQuestion(action: UIAlertAction!) {
         // Randomly generate the three flags to be displayed
         countries = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: countries) as! [String]
         
@@ -65,19 +73,31 @@ class ViewController: UIViewController {
         title = countries[correctAnswer].uppercased()
     }
     
-    
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
+        
+        // Update the round number
+        updateLabels()
         
         // If user's choice is correct add to score, otherwise subtract from score
         if sender.tag == correctAnswer {
             title = "Correct!"
             score += 1
+            round += 1
         }
         else {
             title = "Wrong"
             score -= 1
+            round += 1
         }
+        
+        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        present(ac, animated: true)
+    }
+    
+    func updateLabels() {
+        roundLabel.text = String(round)
     }
     
     override func didReceiveMemoryWarning() {
